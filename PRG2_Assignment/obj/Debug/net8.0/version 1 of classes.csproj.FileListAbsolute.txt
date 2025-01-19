@@ -1,0 +1,18 @@
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.GeneratedMSBuildEditorConfig.editorconfig
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.AssemblyInfoInputs.cache
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.AssemblyInfo.cs
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.csproj.CoreCompileInputs.cache
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.sourcelink.json
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\version 1 of classes.exe
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\airlines.csv
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\boardinggates.csv
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\flights.csv
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\version 1 of classes.deps.json
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\version 1 of classes.runtimeconfig.json
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\version 1 of classes.dll
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\bin\Debug\net8.0\version 1 of classes.pdb
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.dll
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\refint\version 1 of classes.dll
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.pdb
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\version 1 of classes.genruntimeconfig.cache
+C:\school\1.2\programming II\assessment\PRG2_Assignment\version 1 of classes\obj\Debug\net8.0\ref\version 1 of classes.dll

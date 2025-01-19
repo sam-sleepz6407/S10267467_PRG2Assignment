@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:version 1 of classes\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\Terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:version 1 of classes\\Terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\airlines.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:version 1 of classes\\airlines.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\flights.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:version 1 of classes\\flights.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "airlines.csv",
+              "DocumentMoniker": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\airlines.csv",
+              "RelativeDocumentMoniker": "version 1 of classes\\airlines.csv",
+              "ToolTip": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\airlines.csv",
+              "RelativeToolTip": "version 1 of classes\\airlines.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2025-01-18T10:35:48.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "flights.csv",
+              "DocumentMoniker": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\flights.csv",
+              "RelativeDocumentMoniker": "version 1 of classes\\flights.csv",
+              "ToolTip": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\flights.csv",
+              "RelativeToolTip": "version 1 of classes\\flights.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2025-01-18T10:33:46.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\Program.cs",
+              "RelativeDocumentMoniker": "version 1 of classes\\Program.cs",
+              "ToolTip": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\Program.cs",
+              "RelativeToolTip": "version 1 of classes\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T10:33:39.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Terminal.cs",
+              "DocumentMoniker": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\Terminal.cs",
+              "RelativeDocumentMoniker": "version 1 of classes\\Terminal.cs",
+              "ToolTip": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\Terminal.cs",
+              "RelativeToolTip": "version 1 of classes\\Terminal.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T10:33:23.262Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
