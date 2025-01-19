@@ -1,3 +1,12 @@
+//========================================================== 
+
+// Student Number	:
+
+// Student Name	: 
+
+// Partner Name	: Valerie Soh Jia Qi (Valerie wrote this code)
+
+//==========================================================
 using System;
 using System.Collections.Generic;
 using System.Linq;
