@@ -4,7 +4,7 @@
 
 // Student Name	: 
 
-// Partner Name	: Valerie Soh Jia Qi
+// Partner Name	: Valerie Soh Jia Qi (Valerie wrote this code)
 
 //========================================================== 
 using System;
