@@ -1,4 +1,13 @@
-﻿//features 1, 4, 7 & 8
+//========================================================== 
+
+// Student Number : S10267467D
+
+// Student Name	: Chee Hsiao En Samuela
+
+// Partner Name	: Valerie Soh Jia Qi
+
+//==========================================================
+//features 1, 4, 7 & 8
 using PRG2_Assignment;
 
 //feature 1
