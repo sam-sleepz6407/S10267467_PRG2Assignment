@@ -1,8 +1,8 @@
 //========================================================== 
 
-// Student Number	:
+// Student Number	: S10267467D
 
-// Student Name	: 
+// Student Name	: Chee Hsiao En Samuela
 
 // Partner Name	: Valerie Soh Jia Qi (Valerie wrote this code)
 
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRG_2_Assignment
+namespace PRG2_Assignment
 {
     abstract class Flight
     {

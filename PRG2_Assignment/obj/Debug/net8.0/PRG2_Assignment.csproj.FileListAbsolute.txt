@@ -1,0 +1,5 @@
+C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.AssemblyInfoInputs.cache
+C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.AssemblyInfo.cs
+C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.csproj.CoreCompileInputs.cache
+C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.sourcelink.json

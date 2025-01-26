@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\PRG2_Assignment.csproj",
+      "projectUniqueName": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\PRG2_Assignment\\PRG2_Assignment.csproj",
       "projectName": "PRG2_Assignment",
-      "projectPath": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\PRG2_Assignment.csproj",
+      "projectPath": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\PRG2_Assignment\\PRG2_Assignment.csproj",
       "packagesPath": "C:\\Users\\cheeh\\.nuget\\packages\\",
-      "outputPath": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\version 1 of classes\\obj\\",
+      "outputPath": "C:\\school\\1.2\\programming II\\assessment\\PRG2_Assignment\\PRG2_Assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cheeh\\AppData\\Roaming\\NuGet\\NuGet.Config",
