@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRG_2_Assignment
+namespace PRG2_Assignment
 {
     class DDJBFlight : Flight
     {
