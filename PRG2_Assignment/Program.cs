@@ -4,10 +4,9 @@
 
 // Student Name	: Chee Hsiao En Samuela (feature 1, 4, 7 & 8)
 
-// Partner Name	: Valerie Soh Jia Qi
+// Partner Name	: Valerie Soh Jia Qi (feature 2, 3, 5, 6, 9)
 
 //==========================================================
-//features 1, 4, 7 & 8
 using PRG2_Assignment;
 
 //feature 1
