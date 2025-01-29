@@ -7,10 +7,7 @@
 // Partner Name	: Valerie Soh Jia Qi (feature 2, 3, 5, 6, 9)
 
 //==========================================================
-using Microsoft.VisualBasic;
 using PRG_2_Assignment;
-using System.Numerics;
-using System.Xml.Linq;
 
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
 
