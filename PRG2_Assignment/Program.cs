@@ -11,7 +11,6 @@ using Microsoft.VisualBasic;
 using PRG_2_Assignment;
 using System.Numerics;
 using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
 
