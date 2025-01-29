@@ -97,6 +97,97 @@ void InitData(Dictionary<string, Flight> flightDict)
 //feature 4 (option 2)
 //displayboardinggate(boardinggatedict);
 
+void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
+{
+    Console.Write("Enter Flight Number: ");
+    string fn = Console.ReadLine()?.Trim();
+
+    Console.Write("Enter Origin: ");
+    string ori = Console.ReadLine()?.Trim();
+
+    Console.Write("Enter Destination: ");
+    string dest = Console.ReadLine()?.Trim();
+
+    Console.Write("Enter Expected Departure Time (yyyy-mm-dd hh:mm): ");
+    DateTime et;
+    while (!DateTime.TryParse(Console.ReadLine(), out et))
+    {
+        Console.Write("Invalid format. Please enter the Expected Departure Time (yyyy-mm-dd hh:mm): ");
+    }
+
+    Console.Write("Enter Status (On Time, Delayed, Boarding): ");
+    string stat = Console.ReadLine()?.Trim() ?? "On Time";
+
+    string src = null;
+    Console.Write("Enter Special Request Code (or press Enter to skip): ");
+    src = Console.ReadLine()?.Trim();
+
+    Console.WriteLine("\nSelect the Flight Type:");
+    Console.WriteLine("1. DDJBFlight (Special Request Code required)");
+    Console.WriteLine("2. LWTTFlight (Special Request Code required)");
+    Console.WriteLine("3. CFFTFlight (Special Request Code required)");
+    Console.WriteLine("4. NORMFlight (No Special Request Code)");
+
+    Console.Write("\nEnter Flight Type (1, 2, 3, or 4): ");
+    string flightType = Console.ReadLine()?.Trim();
+
+    Flight newFlight = null;
+
+    if (flightType == "1")
+    {
+        newFlight = new DDJBFlight(fn, ori, dest, et, stat, src);
+    }
+    else if (flightType == "2")
+    {
+        newFlight = new LWTTFlight(fn, ori, dest, et, stat, src);
+    }
+    else if (flightType == "3")
+    {
+        newFlight = new CFFTFlight(fn, ori, dest, et, stat, src);
+    }
+    else if (flightType == "4")
+    {
+        newFlight = new NORMFlight(fn, ori, dest, et, stat);
+    }
+    else
+    {
+        Console.WriteLine("Invalid flight type entered. Please try again.");
+        return;
+    }
+
+    if (newFlight != null)
+    {
+        if (flightDict.ContainsKey(fn))
+        {
+            Console.WriteLine($"Flight number {fn} already exists. Please choose a different flight number.");
+            return;
+        }
+
+        flightDict.Add(newFlight.FlightNumber, newFlight);
+        Console.WriteLine("New flight has been successfully added!");
+
+        using (StreamWriter sw = new StreamWriter("flights.csv", true))
+        {
+            if (newFlight is DDJBFlight ddjb)
+            {
+                sw.WriteLine($"{newFlight.FlightNumber},{newFlight.Origin},{newFlight.Destination},{newFlight.ExpectedTime:yyyy-MM-dd HH:mm},{newFlight.Status},{ddjb.SpecialRequestCode}");
+            }
+            else if (newFlight is LWTTFlight lwtt)
+            {
+                sw.WriteLine($"{newFlight.FlightNumber},{newFlight.Origin},{newFlight.Destination},{newFlight.ExpectedTime:yyyy-MM-dd HH:mm},{newFlight.Status},{lwtt.SpecialRequestCode}");
+            }
+            else if (newFlight is CFFTFlight cfft)
+            {
+                sw.WriteLine($"{newFlight.FlightNumber},{newFlight.Origin},{newFlight.Destination},{newFlight.ExpectedTime:yyyy-MM-dd HH:mm},{newFlight.Status},{cfft.SpecialRequestCode}");
+            }
+            else if (newFlight is NORMFlight norm)
+            {
+                sw.WriteLine($"{newFlight.FlightNumber},{newFlight.Origin},{newFlight.Destination},{newFlight.ExpectedTime:yyyy-MM-dd HH:mm},{newFlight.Status}");
+            }
+        }
+        Console.WriteLine("Flight details have been saved to flights.csv!");
+    }
+}
 
 //feature 7 (option 5)
 void feature7()
