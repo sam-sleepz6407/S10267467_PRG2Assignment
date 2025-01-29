@@ -7,7 +7,16 @@
 // Partner Name	: Valerie Soh Jia Qi (feature 2, 3, 5, 6, 9)
 
 //==========================================================
-using PRG2_Assignment;
+using Microsoft.VisualBasic;
+using PRG_2_Assignment;
+using System.Numerics;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
+
+InitData(flightDict);
+LoadFlights(flightDict);
 
 //feature 1
 Dictionary<string, Airline> airlinedict = new Dictionary<string, Airline>();
@@ -63,7 +72,31 @@ while (true)
     }
 }
 
+void LoadFlights(Dictionary<string, Flight> flightDict)  //feature 2 
+{
+    using (StreamReader sr = new StreamReader("flights.csv"))
+    {
+        string line = sr.ReadLine();
+        while ((line = sr.ReadLine()) != null)
+        {
+            string[] data = line.Split(",");
+        }
+    }
+}
 
+void InitData(Dictionary<string, Flight> flightDict)
+{
+    flightDict.Add("SQ 693", new NORMFlight("SQ 693", "Tokyo", "Singapore", DateTime.Today.AddHours(10).AddMinutes(30), "On Time"));
+    flightDict.Add("MH 722", new NORMFlight("MH 722", "Kuala Lumpur", "Singapore", DateTime.Today.AddHours(11).AddMinutes(00), "Delayed"));
+    flightDict.Add("JL 122", new NORMFlight("JL 122", "Tokyo", "Singapore", DateTime.Today.AddHours(12).AddMinutes(15), "On Time"));
+    flightDict.Add("CX 312", new NORMFlight("CX 312", "Singapore", "Hong Kong", DateTime.Today.AddHours(13).AddMinutes(00), "Boarding"));
+    flightDict.Add("QF 981", new NORMFlight("QF 981", "Singapore", "Sydney", DateTime.Today.AddHours(14).AddMinutes(45), "Delayed"));
+
+    foreach (var flight in flightDict)
+    {
+        Console.WriteLine(flight.Value);  //feature 3
+    }
+}
 
 //feature 4 (option 2)
 //displayboardinggate(boardinggatedict);
