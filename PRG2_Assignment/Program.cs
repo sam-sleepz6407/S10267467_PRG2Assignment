@@ -2,7 +2,7 @@
 
 // Student Number : S10267467D
 
-// Student Name	: Chee Hsiao En Samuela
+// Student Name	: Chee Hsiao En Samuela (feature 1, 4, 7 & 8)
 
 // Partner Name	: Valerie Soh Jia Qi
 
@@ -12,27 +12,22 @@ using PRG2_Assignment;
 
 //feature 1
 Dictionary<string, Airline> airlinedict = new Dictionary<string, Airline>();
+Console.WriteLine("Loading Airlines...");
 loadairlines(airlinedict);
-//foreach (KeyValuePair<string, Airline> kvp in airlinedict)
-//{
-//    Console.WriteLine(kvp.Key);
-//    Console.WriteLine(kvp.Value.ToString());
-//    Console.WriteLine();
-//}
-Dictionary<string, BoardingGate> boardinggatedict = new Dictionary<string, BoardingGate>();
-loadboardinggates(boardinggatedict);
-//foreach (KeyValuePair<string, BoardingGate> kvp in boardinggatedict)
-//{
-//    Console.WriteLine(kvp.Key);
-//    Console.WriteLine(kvp.Value.ToString());
-//    Console.WriteLine();
-//}
+Console.WriteLine($"{airlinedict.Count} Airlines Loaded!");
 
+Dictionary<string, BoardingGate> boardinggatedict = new Dictionary<string, BoardingGate>();
+Console.WriteLine("Loading Boarding Gates...");
+loadboardinggates(boardinggatedict);
+Console.WriteLine($"{boardinggatedict.Count} Boarding Gates Loaded!");
+
+
+Console.WriteLine("\n\n\n");
 //main
 while (true)
 {
     displaymainmenu();
-    Console.Write("Your choice: ");
+    Console.WriteLine("Please select your option: ");
     string option = Console.ReadLine();
     if (option == "1")
     {
@@ -52,9 +47,13 @@ while (true)
     }
     else if (option == "5")
     {
-
+        feature7();
     }
     else if (option == "6")
+    {
+
+    }
+    else if (option == "7")
     {
 
     }
@@ -72,7 +71,41 @@ while (true)
 
 
 //feature 7 (option 5)
-//displayairline(airlinedict);
+void feature7()
+{
+    displayairline(airlinedict);
+    bool valid = false;
+    string code="";
+    while (!valid)
+    {
+        valid = true;
+        Console.Write("Enter Airline Code: ");
+        code = Console.ReadLine();
+        if (code == null)
+        {
+            valid = false;
+            Console.WriteLine("Code must not be empty. ");
+        }
+        if (code.Length != 2)
+        {
+            valid = false;
+            Console.WriteLine("Length of the code must be 2. ");
+        }
+        if (!code.All(char.IsLetter))
+        {
+            valid = false;
+            Console.WriteLine("Code must only contain letters. ");
+        }
+    }
+    if (searchairline(code) != null)
+    {
+        Airline airline = searchairline(code);
+    }
+    else
+    {
+        Console.WriteLine("Airline not found. ");
+    }
+}
 
 
 
@@ -80,16 +113,18 @@ while (true)
 void displaymainmenu()
 {
     Console.WriteLine();
-    Console.WriteLine("-------------------------------------------------------");
-    Console.WriteLine("MAIN MENU");
-    Console.WriteLine("[1] List all flights with their basic information");
-    Console.WriteLine("[2] List all boarding gates");
-    Console.WriteLine("[3] Assign a boarding gate to a flight");
-    Console.WriteLine("[4] Create a new flight");
-    Console.WriteLine("[5] Display full flight details from an airline");
-    Console.WriteLine("[6] Modify flight details");
-    Console.WriteLine("[0] Exit");
-    Console.WriteLine("-------------------------------------------------------");
+    Console.WriteLine("=============================================");
+    Console.WriteLine("Welcome to Changi Airport Terminal 5");
+    Console.WriteLine("=============================================");
+    Console.WriteLine("1. List All Flights");
+    Console.WriteLine("2. List Boarding Gates");
+    Console.WriteLine("3. Assign a Boarding Gate to a Flight");
+    Console.WriteLine("4. Create Flight");
+    Console.WriteLine("5. Display Airline Flights");
+    Console.WriteLine("6. Modify Flight Details");
+    Console.WriteLine("7. Display Flight Schedule");
+    Console.WriteLine("0. Exit");
+    Console.WriteLine("\n");
 }
 
 void loadairlines(Dictionary<string, Airline> airlinedict)
@@ -103,7 +138,7 @@ void loadairlines(Dictionary<string, Airline> airlinedict)
             string name = sdeets[0];
             string code = sdeets[1];
             Airline airline = new Airline(name, code);
-            airlinedict[name] = airline;
+            airlinedict[code] = airline;
         }
     }
 }
@@ -149,14 +184,26 @@ void displayboardinggate(Dictionary<string, BoardingGate> boardinggatedict)
 
 void displayairline(Dictionary<string, Airline> airlinedict)
 {
+    Console.WriteLine("=============================================");
+    Console.WriteLine("List of Airlines for Changi Airport Terminal 5");
+    Console.WriteLine("=============================================");
+    Console.WriteLine($"{"Airline Code",-16}{"Airline Name"}");
     foreach (KeyValuePair<string, Airline> kvp in airlinedict)
     {
-        Console.WriteLine(kvp.Key);
-        Console.WriteLine(kvp.Value.ToString());
-        Console.WriteLine();
+        Console.WriteLine($"{kvp.Key,-16}{kvp.Value.Name}");
     }
 }
-void searchairline()
+Airline? searchairline(string code)
 {
-
+    Airline airline;
+    foreach (KeyValuePair<string, Airline> kvp in airlinedict)
+    {
+        if (kvp.Key == code)
+        {
+            airline = kvp.Value;
+            return airline;
+        }
+    }
+    return null;
 }
+//do for each flight show airline num origin and dest once valerie done w loading flights
