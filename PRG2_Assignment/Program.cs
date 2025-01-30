@@ -317,7 +317,50 @@ void feature7()
     }
 }
 
+void DisFlightsChron(Dictionary<string, Flight> flightDict) //feature 9
+{
+    var sortedFlights = flightDict.Values.OrderBy(f => f.ExpectedTime).ToList();
 
+    Console.WriteLine("Flights for the day (ordered by earliest departure time):\n");
+
+    foreach (var flight in sortedFlights)
+    {
+        Console.WriteLine($"Flight Number: {flight.FlightNumber}");
+        Console.WriteLine($"Airline Name: {flight.Airline}");
+        Console.WriteLine($"Origin: {flight.Origin}");
+        Console.WriteLine($"Destination: {flight.Destination}");
+        Console.WriteLine($"Expected Departure Time: {flight.ExpectedTime:yyyy-MM-dd HH:mm}");
+        Console.WriteLine($"Status: {flight.Status}");
+
+        if (flight is DDJBFlight ddjb)
+        {
+            Console.WriteLine($"Special Request Code: {ddjb.SpecialRequestCode}");
+        }
+        else if (flight is LWTTFlight lwtt)
+        {
+            Console.WriteLine($"Special Request Code: {lwtt.SpecialRequestCode}");
+        }
+        else if (flight is CFFTFlight cfft)
+        {
+            Console.WriteLine($"Special Request Code: {cfft.SpecialRequestCode}");
+        }
+        else
+        {
+            Console.WriteLine("Special Request Code: None");
+        }
+
+        if (!string.IsNullOrEmpty(flight.BoardingGate))
+        {
+            Console.WriteLine($"Boarding Gate: {flight.BoardingGate}");
+        }
+        else
+        {
+            Console.WriteLine("Boarding Gate: Not assigned");
+        }
+
+        Console.WriteLine();
+    }
+}
 
 //methods
 void displaymainmenu()
