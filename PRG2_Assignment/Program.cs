@@ -97,6 +97,97 @@ void InitData(Dictionary<string, Flight> flightDict)
 //feature 4 (option 2)
 //displayboardinggate(boardinggatedict);
 
+void AssBoardingGate(Dictionary<string, Flight> flightDict)  //feature 5
+{
+    while (true)
+    {
+        Console.Write("Enter your flight number: ");
+        string fn = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(fn))
+        {
+            Console.WriteLine("Invalid input. Please enter a valid flight number.");
+            continue;
+        }
+
+        if (!flightDict.ContainsKey(fn))
+        {
+            Console.WriteLine("Flight does not exist. Do you want to add a new flight? [Y/N]");
+            string response = Console.ReadLine()?.ToUpper();
+            if (response != "Y")
+            {
+                Console.WriteLine("Returning to main menu.");
+                break;
+            }
+            else if (response == "N")
+            {
+                continue;
+            }
+        }
+
+        Flight flight = flightDict[fn];
+        Console.WriteLine($"Flight {fn} found! Details:\n{flight}");
+
+        string specialRequestCode = "None";
+        if (flight is DDJBFlight ddjbFlight)
+        {
+            specialRequestCode = ddjbFlight.SpecialRequestCode ?? "None";
+        }
+        else if (flight is LWTTFlight lwttFlight)
+        {
+            specialRequestCode = lwttFlight.SpecialRequestCode ?? "None";
+        }
+        else if (flight is CFFTFlight cfftFlight)
+        {
+            specialRequestCode = cfftFlight.SpecialRequestCode ?? "None";
+        }
+
+        Console.WriteLine($"Special Request Code: {specialRequestCode}");
+
+        Console.Write("Enter the boarding gate: ");
+        string bg = Console.ReadLine();
+
+        if (flightDict.Values.Any(f => f.BoardingGate == bg))
+        {
+            Console.WriteLine($"Boarding gate {bg} is already assigned to another flight. Please choose a different one.");
+            continue;
+        }
+
+        flight.BoardingGate = bg;
+
+        Console.WriteLine($"Boarding gate {bg} has been successfully assigned to flight {fn}.");
+        Console.WriteLine($"Flight Details: \nFlight Number: {fn}\nBoarding Gate: {bg}\nSpecial Request Code: {specialRequestCode}");
+
+        Console.Write("Would you like to update the flight status? [Y/N]: ");
+        string statusResponse = Console.ReadLine()?.ToUpper();
+
+        if (statusResponse == "Y")
+        {
+            Console.WriteLine("Enter the new status (Delayed, Boarding, On Time): ");
+            string newStatus = Console.ReadLine();
+
+            if (newStatus == "Delayed" || newStatus == "Boarding" || newStatus == "On Time")
+            {
+                flight.Status = newStatus;
+                Console.WriteLine($"Flight status updated to {newStatus}.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid status. Setting to default status 'On Time'.");
+                flight.Status = "On Time";
+            }
+        }
+        else
+        {
+            flight.Status = "On Time";
+            Console.WriteLine("Flight status set to default: 'On Time'.");
+        }
+
+        Console.WriteLine($"Boarding gate assignment complete for flight {fn}.\n");
+        break;
+    }
+}
+
 void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
 {
     Console.Write("Enter Flight Number: ");
