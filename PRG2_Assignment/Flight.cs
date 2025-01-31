@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRG2_Assignment
+namespace PRG_2_Assignment
 {
     abstract class Flight
     {
@@ -22,6 +22,8 @@ namespace PRG2_Assignment
         public string Destination { get; set; }
         public DateTime ExpectedTime { get; set; }
         public string Status { get; set; }
+        public string BoardingGate { get; set; }
+        public Airline Airline { get; set; }
         public Flight(string fn, string ori, string dest, DateTime et, string stat) 
         {
             FlightNumber = fn;
@@ -37,7 +39,7 @@ namespace PRG2_Assignment
         }
         public override string ToString()
         {
-            return $"Flight Number: {FlightNumber}, Origin: {Origin}, Destination: {Destination}, Expected Time: {ExpectedTime}, Status: {Status}";
+            return $"Flight Number: {FlightNumber}, Origin: {Origin}, Destination: {Destination}, Expected Time: {ExpectedTime:hh:mm tt}, Status: {Status}";
         }
     }
 }
