@@ -11,10 +11,6 @@ using PRG_2_Assignment;
 
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
 
-InitData(flightDict);
-LoadFlights(flightDict);
-AssBoardingGate(flightDict);
-
 //feature 1
 Dictionary<string, Airline> airlinedict = new Dictionary<string, Airline>();
 Console.WriteLine("Loading Airlines...");
@@ -26,6 +22,9 @@ Console.WriteLine("Loading Boarding Gates...");
 loadboardinggates(boardinggatedict);
 Console.WriteLine($"{boardinggatedict.Count} Boarding Gates Loaded!");
 
+InitData(flightDict);
+LoadFlights(flightDict);
+AssBoardingGate(flightDict);
 
 Console.WriteLine("\n\n\n");
 //main
