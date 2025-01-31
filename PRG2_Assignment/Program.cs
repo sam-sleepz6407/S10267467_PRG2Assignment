@@ -69,41 +69,62 @@ while (true)
     }
 }
 
-void LoadFlights(Dictionary<string, Flight> flightDict)  //feature 2 
+void LoadFlights(Dictionary<string, Flight> flightDict) //feature 2
 {
-    using (StreamReader sr = new StreamReader("flights.csv"))
+    try
     {
-        string line = sr.ReadLine();
-        while ((line = sr.ReadLine()) != null)
+        using (StreamReader sr = new StreamReader("flights.csv"))
         {
-            string[] data = line.Split(",");
-            string fn = data[0];
-            string ori = data[1];
-            string dest = data[2];
-            DateTime et = DateTime.Parse(data[3]);
-            string status = data[4];
-            string specialRequestCode = data.Length > 5 ? data[5] : null;
+            string line = sr.ReadLine();
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] data = line.Split(",");
+                string fn = data[0];
+                string ori = data[1];
+                string dest = data[2];
+                DateTime et = DateTime.Parse(data[3]);
+                string status = data[4];
+                string src = data.Length > 5 ? data[5] : null;
 
-            Flight flight = null;
-            if (status.Contains("DDJB"))
-            {
-                flight = new DDJBFlight(fn, ori, dest, et, status, specialRequestCode);
-            }
-            else if (status.Contains("LWTT"))
-            {
-                flight = new LWTTFlight(fn, ori, dest, et, status, specialRequestCode);
-            }
-            else if (status.Contains("CFFT"))
-            {
-                flight = new CFFTFlight(fn, ori, dest, et, status, specialRequestCode);
-            }
-            else
-            {
-                flight = new NORMFlight(fn, ori, dest, et, status);
-            }
+                if (flightDict.ContainsKey(fn))
+                {
+                    Console.WriteLine($"Duplicate flight number {fn} found! Skipping...");
+                    continue;
+                }
 
-            flightDict.Add(fn, flight);
+                Flight flight = null;
+                if (status.Contains("DDJB"))
+                {
+                    flight = new DDJBFlight(fn, ori, dest, et, status, src);
+                }
+                else if (status.Contains("LWTT"))
+                {
+                    flight = new LWTTFlight(fn, ori, dest, et, status, src);
+                }
+                else if (status.Contains("CFFT"))
+                {
+                    flight = new CFFTFlight(fn, ori, dest, et, status, src);
+                }
+                else
+                {
+                    flight = new NORMFlight(fn, ori, dest, et, status);
+                }
+
+                flightDict.Add(fn, flight);
+            }
         }
+    }
+    catch (FileNotFoundException ex)
+    {
+        Console.WriteLine($"Error: File not found - {ex.Message}");
+    }
+    catch (FormatException ex)
+    {
+        Console.WriteLine($"Error: Data format issue - {ex.Message}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"An unexpected error occurred while loading flights: {ex.Message}");
     }
 }
 
@@ -124,7 +145,7 @@ void InitData(Dictionary<string, Flight> flightDict)
 //feature 4 (option 2)
 //displayboardinggate(boardinggatedict);
 
-void AssBoardingGate(Dictionary<string, Flight> flightDict)  //feature 5
+void AssBoardingGate(Dictionary<string, Flight> flightDict) //feature 5
 {
     while (true)
     {
@@ -143,38 +164,25 @@ void AssBoardingGate(Dictionary<string, Flight> flightDict)  //feature 5
                 Console.WriteLine("Flight does not exist. Do you want to add a new flight? [Y/N]");
                 string response = Console.ReadLine()?.ToUpper();
 
-                if (string.IsNullOrWhiteSpace(response))
+                if (response == "Y")
                 {
-                    throw new ArgumentException("Invalid response. Please enter 'Y' or 'N'.");
+                    CreateNewFlight(flightDict);
+                    break;
                 }
-
-                else if (response != "Y")
+                else
                 {
                     Console.WriteLine("Returning to main menu.");
                     break;
-                }
-                else if (response == "N")
-                {
-                    continue;
                 }
             }
 
             Flight flight = flightDict[fn];
             Console.WriteLine($"Flight {fn} found! Details:\n{flight}");
-            string specialRequestCode = "None";
 
-            if (flight is DDJBFlight ddjbFlight)
-            {
-                specialRequestCode = ddjbFlight.SpecialRequestCode ?? "None";
-            }
-            else if (flight is LWTTFlight lwttFlight)
-            {
-                specialRequestCode = lwttFlight.SpecialRequestCode ?? "None";
-            }
-            else if (flight is CFFTFlight cfftFlight)
-            {
-                specialRequestCode = cfftFlight.SpecialRequestCode ?? "None";
-            }
+            string specialRequestCode = "None";
+            if (flight is DDJBFlight ddjbFlight) specialRequestCode = ddjbFlight.SpecialRequestCode ?? "None";
+            else if (flight is LWTTFlight lwttFlight) specialRequestCode = lwttFlight.SpecialRequestCode ?? "None";
+            else if (flight is CFFTFlight cfftFlight) specialRequestCode = cfftFlight.SpecialRequestCode ?? "None";
 
             Console.WriteLine($"Special Request Code: {specialRequestCode}");
             Console.Write("Enter the boarding gate: ");
@@ -185,7 +193,7 @@ void AssBoardingGate(Dictionary<string, Flight> flightDict)  //feature 5
                 throw new ArgumentException("Invalid input. Boarding gate cannot be empty.");
             }
 
-            else if (flightDict.Values.Any(f => f.BoardingGate == bg))
+            if (flightDict.Values.Any(f => f.BoardingGate == bg))
             {
                 Console.WriteLine($"Boarding gate {bg} is already assigned to another flight. Please choose a different one.");
                 continue;
@@ -193,29 +201,17 @@ void AssBoardingGate(Dictionary<string, Flight> flightDict)  //feature 5
 
             flight.BoardingGate = bg;
             Console.WriteLine($"Boarding gate {bg} has been successfully assigned to flight {fn}.");
-            Console.WriteLine($"Flight Details: \nFlight Number: {fn}\nBoarding Gate: {bg}\nSpecial Request Code: {specialRequestCode}");
+
             Console.Write("Would you like to update the flight status? [Y/N]: ");
             string statusResponse = Console.ReadLine()?.ToUpper();
 
-            if (string.IsNullOrWhiteSpace(statusResponse))
-            {
-                throw new ArgumentException("Invalid response. Please enter 'Y' or 'N'.");
-            }
-
-            else if (statusResponse == "Y")
+            if (statusResponse == "Y")
             {
                 Console.WriteLine("Enter the new status (Delayed, Boarding, On Time): ");
                 string newStatus = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(newStatus))
-                {
-                    throw new ArgumentException("Invalid status. Please enter 'Delayed', 'Boarding', or 'On Time'.");
-                }
-
-                else if (newStatus == "Delayed" || newStatus == "Boarding" || newStatus == "On Time")
+                if (newStatus == "Delayed" || newStatus == "Boarding" || newStatus == "On Time")
                 {
                     flight.Status = newStatus;
-                    Console.WriteLine($"Flight status updated to {newStatus}.");
                 }
                 else
                 {
@@ -229,7 +225,6 @@ void AssBoardingGate(Dictionary<string, Flight> flightDict)  //feature 5
                 Console.WriteLine("Flight status set to default: 'On Time'.");
             }
 
-            Console.WriteLine($"Boarding gate assignment complete for flight {fn}.\n");
             break;
         }
         catch (ArgumentException ex)
