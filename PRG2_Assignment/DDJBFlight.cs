@@ -32,7 +32,7 @@ namespace PRG2_Assignment
         public DDJBFlight(string fn, string ori, string dest, DateTime et, string stat) : base(fn, ori, dest, et, stat) { }
         public override string ToString()
         {
-            return $"Flight Number: {FlightNumber}, Origin: {Origin}, Destination: {Destination}, Expected Time: {ExpectedTime}, Status: {Status}", Special Request Code: {SpecialRequestCode}";
+            return $"Flight Number: {FlightNumber}, Origin: {Origin}, Destination: {Destination}, Expected Time: {ExpectedTime:hh:mm tt}, Status: {Status}, Special Request Code: {SpecialRequestCode}";
         }
     }
 }
