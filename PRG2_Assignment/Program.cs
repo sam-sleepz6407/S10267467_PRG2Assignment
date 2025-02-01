@@ -22,7 +22,7 @@ Console.WriteLine("Loading Boarding Gates...");
 loadboardinggates(boardinggatedict);
 Console.WriteLine($"{boardinggatedict.Count} Boarding Gates Loaded!");
 
-InitData(flightDict);
+ListFlights(flightDict);
 LoadFlights(flightDict);
 AssBoardingGate(flightDict);
 
