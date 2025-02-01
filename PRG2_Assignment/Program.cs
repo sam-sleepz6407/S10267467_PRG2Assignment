@@ -127,17 +127,17 @@ void LoadFlights(Dictionary<string, Flight> flightDict) //feature 2
     }
 }
 
-void InitData(Dictionary<string, Flight> flightDict)
+void ListFlights(Dictionary<string, Flight> flightDict) //feature 3
 {
-    flightDict.Add("SQ 693", new NORMFlight("SQ 693", "Tokyo", "Singapore", DateTime.Today.AddHours(10).AddMinutes(30), "On Time"));
-    flightDict.Add("MH 722", new NORMFlight("MH 722", "Kuala Lumpur", "Singapore", DateTime.Today.AddHours(11).AddMinutes(00), "Delayed"));
-    flightDict.Add("JL 122", new NORMFlight("JL 122", "Tokyo", "Singapore", DateTime.Today.AddHours(12).AddMinutes(15), "On Time"));
-    flightDict.Add("CX 312", new NORMFlight("CX 312", "Singapore", "Hong Kong", DateTime.Today.AddHours(13).AddMinutes(00), "Boarding"));
-    flightDict.Add("QF 981", new NORMFlight("QF 981", "Singapore", "Sydney", DateTime.Today.AddHours(14).AddMinutes(45), "Delayed"));
+    Console.WriteLine("=============================================\r\n" +
+        "List of Flights for Changi Airport Terminal 5\r\n=============================================" +
+        "\r\nFlight Number  Origin                   Destination              Expected Time     Status\r\n" +
+        "-------------------------------------------------------------------------------------------");
 
-    foreach (var flight in flightDict)
+    foreach (var flight in flightDict.Values)
     {
-        Console.WriteLine(flight.Value);  //feature 3
+        string formattedTime = flight.ExpectedTime.ToString("hh:mm tt");
+        Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{formattedTime,-18}{flight.Status}");
     }
 }
 
