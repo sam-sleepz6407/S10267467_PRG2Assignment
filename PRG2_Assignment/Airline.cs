@@ -20,7 +20,7 @@ namespace PRG2_Assignment
     {
         public string Name { get; set; }
         public string Code { get; set; }
-        public Dictionary<string, Flight> Flights { get; set; }
+        public Dictionary<string, Flight> Flights { get; set; } = new Dictionary<string, Flight>();
         public Airline(string name, string code)
         {
             Name = name;

@@ -23,9 +23,10 @@ Console.WriteLine("Loading Boarding Gates...");
 loadboardinggates(boardinggatedict);
 Console.WriteLine($"{boardinggatedict.Count} Boarding Gates Loaded!");
 
-ListFlights(flightDict);
+
+Console.WriteLine("Loading Flights...");
 LoadFlights(flightDict);
-AssBoardingGate(flightDict);
+Console.WriteLine($"{flightDict.Count} Flights Loaded!");
 
 Console.WriteLine("\n\n\n");
 //main
@@ -36,7 +37,7 @@ while (true)
     string option = Console.ReadLine();
     if (option == "1")
     {
-
+        ListFlights(flightDict);
     }
     else if (option == "2")
     {
@@ -44,7 +45,7 @@ while (true)
     }
     else if (option == "3")
     {
-
+        AssBoardingGate(flightDict);
     }
     else if (option == "4")
     {
@@ -111,6 +112,13 @@ void LoadFlights(Dictionary<string, Flight> flightDict) //feature 2
                 }
 
                 flightDict.Add(fn, flight);
+                foreach (KeyValuePair<string,Airline> kvp in airlinedict)
+                {
+                    if (fn[0..2] == kvp.Key)
+                    {
+                        kvp.Value.Flights[fn]= flight;
+                    }
+                }
             }
         }
     }
@@ -324,6 +332,13 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
         }
 
         flightDict.Add(newFlight.FlightNumber, newFlight);
+        foreach (KeyValuePair<string, Airline> kvp in airlinedict)
+        {
+            if (fn[0..2] == kvp.Key)
+            {
+                kvp.Value.Flights[fn] = newFlight;
+            }
+        }
         Console.WriteLine("New flight has been successfully added!");
 
         using (StreamWriter sw = new StreamWriter("flights.csv", true))
@@ -382,12 +397,14 @@ void feature7()
     }
     if (searchairline(code) != null)
     {
-        Airline airline = searchairline(code);
+        Airline searchedairline = searchairline(code);
+        ListAirlineFlights(searchedairline);
     }
     else
     {
         Console.WriteLine("Airline not found. ");
     }
+    
 }
 
 void DisFlightsChron(Dictionary<string, Flight> flightDict) //feature 9
@@ -587,4 +604,16 @@ Airline? searchairline(string code)
     }
     return null;
 }
-//do for each flight show airline num origin and dest once valerie done w loading flights
+void ListAirlineFlights(Airline airline)
+{
+    Console.WriteLine($"=============================================\n" +
+        $"List of Flights for {airline.Name}\n=============================================" +
+        $"\n{"Flight Number",-16}{"Airline Name",-23}{"Origin",-23}{"Destination",-23}Expected \nDeparture/Arrival Time");
+
+    foreach (KeyValuePair<string,Flight> kpv in airline.Flights)
+    {
+
+        Console.WriteLine($"{kpv.Value.FlightNumber,-16}{airline.Name,-23}{kpv.Value.Origin,-23}{kpv.Value.Destination,-23}{kpv.Value.ExpectedTime}");
+
+    }
+}
