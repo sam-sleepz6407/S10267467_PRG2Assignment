@@ -8,6 +8,7 @@
 
 //==========================================================
 using PRG_2_Assignment;
+using PRG2_Assignment;
 
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
 
