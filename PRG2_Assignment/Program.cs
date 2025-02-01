@@ -434,6 +434,62 @@ void DisFlightsChron(Dictionary<string, Flight> flightDict) //feature 9
     }
 }
 
+void DisTotalFeePerAirline(Dictionary<string, Flight> flightDict, Dictionary<string, BoardingGate> boardinggatedict) //advanced feature (b) by Valerie
+{
+    foreach (KeyValuePair<string, Flight> kvp in flightDict)
+    {
+        if (string.IsNullOrEmpty(kvp.Value.BoardingGate))
+        {
+            Console.WriteLine($"Flight {kvp.Value.FlightNumber} is not assigned a Boarding Gate. Please assign before proceeding.");
+            return;
+        }
+    }
+
+    Dictionary<string, double> airlineFees = new Dictionary<string, double>();
+
+    foreach (KeyValuePair<string, Flight> kvp in flightDict)
+    {
+        Flight flight = kvp.Value;
+        double flightFee = 0;
+
+        if (flight.Origin == "SIN" || flight.Destination == "SIN")
+        {
+            flightFee += flight.Origin == "SIN" || flight.Destination == "SIN" ? 800 : 500;
+        }
+
+        flightFee += 300;
+
+        if (flight.Status == "SpecialRequest")
+        {
+            flightFee += 50;
+        }
+
+        string airlineCode = flight.Airline.Code;
+        if (!airlineFees.ContainsKey(airlineCode))
+        {
+            airlineFees[airlineCode] = 0;
+        }
+
+        airlineFees[airlineCode] += flightFee;
+    }
+
+    foreach (var airlineFee in airlineFees)
+    {
+        string airlineCode = airlineFee.Key;
+        double subtotalFee = airlineFee.Value;
+        double discount = 0;
+        double finalFee = subtotalFee - discount;
+
+        Console.WriteLine($"Airline {airlineCode}:");
+        Console.WriteLine($"  Subtotal of Fees: ${subtotalFee}");
+        Console.WriteLine($"  Discount Applied: ${discount}");
+        Console.WriteLine($"  Final Total Fee: ${finalFee}\n");
+    }
+
+    double totalFees = airlineFees.Values.Sum();
+    Console.WriteLine($"Total Fees for All Airlines: ${totalFees}");
+}
+
 //methods
 void displaymainmenu()
 {
