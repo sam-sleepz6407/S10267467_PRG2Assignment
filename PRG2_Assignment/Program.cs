@@ -398,12 +398,19 @@ void feature7()
     if (searchairline(code) != null)
     {
         Airline searchedairline = searchairline(code);
+        Console.WriteLine($"=============================================\n" + $"List of Flights for {searchedairline.Name}\n=============================================");
         ListAirlineFlights(searchedairline);
     }
     else
     {
         Console.WriteLine("Airline not found. ");
     }
+    
+}
+
+//feature 8 (option 6)
+void feature8()
+{
     
 }
 
@@ -606,9 +613,7 @@ Airline? searchairline(string code)
 }
 void ListAirlineFlights(Airline airline)
 {
-    Console.WriteLine($"=============================================\n" +
-        $"List of Flights for {airline.Name}\n=============================================" +
-        $"\n{"Flight Number",-16}{"Airline Name",-23}{"Origin",-23}{"Destination",-23}Expected \nDeparture/Arrival Time");
+    Console.WriteLine($"{"Flight Number",-16}{"Airline Name",-23}{"Origin",-23}{"Destination",-23}Expected \nDeparture/Arrival Time");
 
     foreach (KeyValuePair<string,Flight> kpv in airline.Flights)
     {
@@ -617,3 +622,6 @@ void ListAirlineFlights(Airline airline)
 
     }
 }
+
+
+//void 
