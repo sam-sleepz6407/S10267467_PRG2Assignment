@@ -754,37 +754,87 @@ void DisTotalFeePerAirline(Dictionary<string, Flight> flightDict, Dictionary<str
         Flight flight = kvp.Value;
         double flightFee = 0;
 
-        if (flight.Origin == "SIN" || flight.Destination == "SIN")
+        if (flight is NORMFlight normFlight)
         {
-            flightFee += flight.Origin == "SIN" || flight.Destination == "SIN" ? 800 : 500;
+            flightFee = normFlight.CalculateFees();
         }
-
-        flightFee += 300;
-
-        if (flight.Status == "SpecialRequest")
+        else if (flight is DDJBFlight ddjbFlight)
         {
-            flightFee += 50;
+            flightFee = ddjbFlight.CalculateFees();
         }
-
+        else if (flight is LWTTFlight lwttFlight)
+        {
+            flightFee = lwttFlight.CalculateFees();
+        }
+        else if (flight is CFFTFlight cfftFlight)
+        {
+            flightFee = cfftFlight.CalculateFees();
+        }
         string airlineCode = flight.Airline.Code;
-        if (!airlineFees.ContainsKey(airlineCode))
-        {
-            airlineFees[airlineCode] = 0;
-        }
 
-        airlineFees[airlineCode] += flightFee;
+        if (airlineFees.ContainsKey(airlineCode))
+        {
+            airlineFees[airlineCode] += flightFee;
+        }
+        else
+        {
+            airlineFees.Add(airlineCode, flightFee);
+        }
     }
 
     foreach (var airlineFee in airlineFees)
     {
         string airlineCode = airlineFee.Key;
         double subtotalFee = airlineFee.Value;
-        double discount = 0;
-        double finalFee = subtotalFee - discount;
+        double totalDiscount = 0;
+        // Discount for every 3 flights arriving/departing
+        int airlineFlightCount = flightDict.Values.Count(f => f.Airline.Code == airlineCode);
+        if (airlineFlightCount % 3 == 0)
+        {
+            totalDiscount += 350;
+        }
+
+        // Discount for flights arriving/departing before 11am or after 9pm
+        foreach (var flight in flightDict.Values.Where(f => f.Airline.Code == airlineCode))
+        {
+            if (flight.ExpectedTime.Hour < 11 || flight.ExpectedTime.Hour >= 21)
+            {
+                totalDiscount += 110;
+            }
+        }
+
+        // Discount for origin of Dubai (DXB), Bangkok (BKK), or Tokyo (NRT)
+        foreach (var flight in flightDict.Values.Where(f => f.Airline.Code == airlineCode))
+        {
+            if (flight.Origin == "DXB" || flight.Origin == "BKK" || flight.Origin == "NRT")
+            {
+                totalDiscount += 25; 
+            }
+        }
+
+        // Discount for flights with no special request code
+        foreach (var flight in flightDict.Values.Where(f => f.Airline.Code == airlineCode))
+        {
+            if (flight is DDJBFlight ddjb && string.IsNullOrEmpty(ddjb.SpecialRequestCode) ||
+                flight is LWTTFlight lwtt && string.IsNullOrEmpty(lwtt.SpecialRequestCode) ||
+                flight is CFFTFlight cfft && string.IsNullOrEmpty(cfft.SpecialRequestCode))
+            {
+                totalDiscount += 50;
+            }
+        }
+
+        // Apply 3% discount for airlines with more than 5 flights
+        if (airlineFlightCount > 5)
+        {
+            double discount3Percent = subtotalFee * 0.03;
+            totalDiscount += discount3Percent;
+        }
+
+        double finalFee = subtotalFee - totalDiscount;
 
         Console.WriteLine($"Airline {airlineCode}:");
         Console.WriteLine($"  Subtotal of Fees: ${subtotalFee}");
-        Console.WriteLine($"  Discount Applied: ${discount}");
+        Console.WriteLine($"  Total Discount Applied: ${totalDiscount}");
         Console.WriteLine($"  Final Total Fee: ${finalFee}\n");
     }
 
