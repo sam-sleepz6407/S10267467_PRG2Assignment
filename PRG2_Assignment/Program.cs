@@ -152,20 +152,19 @@ void ListFlights(Dictionary<string, Flight> flightDict) //feature 3
 {
     Console.WriteLine("=============================================\r\n" +
         "List of Flights for Changi Airport Terminal 5\r\n=============================================" +
-        "\r\nFlight Number  Origin                   Destination              Expected Time     Status\r\n" +
-        "-------------------------------------------------------------------------------------------");
+        "\r\nFlight Number  Origin                   Destination              Expected Time           Status\r\n" +
+        "------------------------------------------------------------------------------------------------");
 
     foreach (var flight in flightDict.Values)
     {
-        string formattedTime = flight.ExpectedTime.ToString("hh:mm tt");
         if (flight.Status == null)
         {
             string newstat = "no status";
-            Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{formattedTime,-18}{newstat}");
+            Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{flight.ExpectedTime,-24}{newstat}");
         }
         else
         {
-            Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{formattedTime,-18}{flight.Status}");
+            Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{flight.ExpectedTime,-24}{flight.Status}");
         }
     }
 }
@@ -719,20 +718,17 @@ void DisFlightsChron(Dictionary<string, Flight> flightDict) //feature 9
 
     Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------");
 
-    Console.WriteLine("{0,-15} {1,-16} {2,-18} {3,-20} {4,-35} {5,-12} {6,-12} {7,-20}",
-        "FlightNumber", "Airline Name", "Origin", "Destination", "Expected Departure/Arrival Time", "Status", "BoardingGate", "Special Request Code");
+    Console.WriteLine("{0,-15} {1,-20} {2,-20} {3,-20} {4,-35} {5,-12} {6,-12}",
+        "FlightNumber", "Airline Name", "Origin", "Destination", "Expected Departure/Arrival Time", "Status", "BoardingGate");
 
     Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------");
 
     foreach (var flight in sortedFlights)
     {
         string boardingGate = string.IsNullOrEmpty(flight.BoardingGate) ? "Unassigned" : flight.BoardingGate;
-        string specialRequestCode = flight is DDJBFlight ? "DDJB" :
-                                     flight is LWTTFlight ? "LWTT" :
-                                     flight is CFFTFlight ? "CFFT" : "NORM";
 
-        Console.WriteLine("{0,-15} {1,-16} {2,-18} {3,-20} {4,-35} {5,-12} {6,-12} {7,-20}",
-            flight.FlightNumber, flight.Airline, flight.Origin, flight.Destination, flight.ExpectedTime.ToString("HH:mm"), flight.Status, boardingGate, specialRequestCode);
+        Console.WriteLine("{0,-15} {1,-20} {2,-20} {3,-20} {4,-35} {5,-12} {6,-12}",
+            flight.FlightNumber, flight.Airline, flight.Origin, flight.Destination, flight.ExpectedTime, flight.Status, boardingGate);
     }
 }
 
