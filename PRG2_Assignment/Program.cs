@@ -281,67 +281,108 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
 
     try
     {
-        Console.Write("Enter Flight Number: ");
-        fn = Console.ReadLine()?.Trim();
-        if (string.IsNullOrEmpty(fn))
+        while (true)
         {
-            Console.Write("Flight number cannot be empty. Please enter a valid flight number: ");
+            Console.Write("Enter Flight Number: ");
             fn = Console.ReadLine()?.Trim();
-        }
-        else if (flightDict.ContainsKey(fn))
-        {
-            Console.Write($"Flight number {fn} already exists. Please choose a different flight number: ");
-            return;
+            if (string.IsNullOrEmpty(fn))
+            {
+                Console.Write("Flight number cannot be empty. Please enter a valid flight number: ");
+                fn = Console.ReadLine()?.Trim();
+            }
+            else if (flightDict.ContainsKey(fn))
+            {
+                Console.Write($"Flight number {fn} already exists. Please choose a different flight number: ");
+            }
+            else
+            {
+                break;
+            }
         }
 
-        Console.Write("Enter Origin: ");
-        ori = Console.ReadLine()?.Trim();
-        if (string.IsNullOrEmpty(ori))
+        while (true)
         {
-            Console.Write("Origin cannot be empty. Please enter a valid origin: ");
+            Console.Write("Enter Origin: ");
             ori = Console.ReadLine()?.Trim();
+            if (string.IsNullOrEmpty(ori))
+            {
+                Console.Write("Origin cannot be empty. Please enter a valid origin: ");
+                ori = Console.ReadLine()?.Trim();
+            }
+            else
+            {
+                break;
+            }
         }
 
-        Console.Write("Enter Destination: ");
-        dest = Console.ReadLine()?.Trim();
-        if (string.IsNullOrEmpty(dest))
+        while (true)
         {
-            Console.Write("Destination cannot be empty. Please enter a valid destination: ");
+            Console.Write("Enter Destination: ");
             dest = Console.ReadLine()?.Trim();
+            if (string.IsNullOrEmpty(dest))
+            {
+                Console.Write("Destination cannot be empty. Please enter a valid destination: ");
+                dest = Console.ReadLine()?.Trim();
+            }
+            else
+            {
+                break;
+            }
         }
 
-        Console.Write("Enter Expected Departure Time (yyyy-mm-dd hh:mm): ");
-        if (!DateTime.TryParse(Console.ReadLine(), out et))
+        while (true)
         {
-            Console.Write("Invalid format. Please enter the Expected Departure Time (yyyy-mm-dd hh:mm): ");
+            Console.Write("Enter Expected Departure Time (yyyy-mm-dd hh:mm): ");
+            if (!DateTime.TryParse(Console.ReadLine(), out et))
+            {
+                Console.Write("Invalid format. Please enter the Expected Departure Time (yyyy-mm-dd hh:mm): ");
+            }
+            else
+            {
+                break;
+            }
         }
 
-        Console.Write("Enter Status (On Time, Delayed, Boarding): ");
-        string inputStat = Console.ReadLine()?.Trim();
-        if (!string.IsNullOrEmpty(inputStat))
+        while (true)
         {
-            stat = inputStat;
+            Console.Write("Enter Status (On Time, Delayed, Boarding): ");
+            string inputStat = Console.ReadLine()?.Trim();
+            if (!string.IsNullOrEmpty(inputStat))
+            {
+                stat = inputStat;
+            }
+            else
+            {
+                break;
+            }
         }
 
         Console.Write("Enter Special Request Code (or press Enter to skip): ");
         string src = Console.ReadLine()?.Trim();
 
         Flight newFlight = null;
-        if (flightType == "1")
+        if (!string.IsNullOrEmpty(src))
         {
-            newFlight = new DDJBFlight(fn, ori, dest, et, stat, src);
+            if (src.StartsWith("DDJB"))
+            {
+                newFlight = new DDJBFlight(fn, ori, dest, et, stat, src);
+            }
+            else if (src.StartsWith("LWTT"))
+            {
+                newFlight = new LWTTFlight(fn, ori, dest, et, stat, src);
+            }
+            else if (src.StartsWith("CFFT"))
+            {
+                newFlight = new CFFTFlight(fn, ori, dest, et, stat, src);
+            }
+            else
+            {
+                newFlight = new NORMFlight(fn, ori, dest, et, stat);
+            }
         }
-        else if (flightType == "2")
+        else
         {
-            newFlight = new LWTTFlight(fn, ori, dest, et, stat, src);
-        }
-        else if (flightType == "3")
-        {
-            newFlight = new CFFTFlight(fn, ori, dest, et, stat, src);
-        }
-        else if (flightType == "4")
-        {
-            newFlight = new NORMFlight(fn, ori, dest, et, stat);
+            newFlight = new NORMFlight(fn, ori, dest, et, stat); //default
         }
 
         flightDict.Add(newFlight.FlightNumber, newFlight);
