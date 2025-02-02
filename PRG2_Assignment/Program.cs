@@ -279,15 +279,20 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
     {
         Console.Write("Enter Flight Number: ");
         fn = Console.ReadLine()?.Trim();
-        while (string.IsNullOrEmpty(fn))
+        if (string.IsNullOrEmpty(fn))
         {
             Console.Write("Flight number cannot be empty. Please enter a valid flight number: ");
             fn = Console.ReadLine()?.Trim();
         }
+        else if (flightDict.ContainsKey(fn))
+        {
+            Console.Write($"Flight number {fn} already exists. Please choose a different flight number: ");
+            return;
+        }
 
         Console.Write("Enter Origin: ");
         ori = Console.ReadLine()?.Trim();
-        while (string.IsNullOrEmpty(ori))
+        if (string.IsNullOrEmpty(ori))
         {
             Console.Write("Origin cannot be empty. Please enter a valid origin: ");
             ori = Console.ReadLine()?.Trim();
@@ -295,14 +300,14 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
 
         Console.Write("Enter Destination: ");
         dest = Console.ReadLine()?.Trim();
-        while (string.IsNullOrEmpty(dest))
+        if (string.IsNullOrEmpty(dest))
         {
             Console.Write("Destination cannot be empty. Please enter a valid destination: ");
             dest = Console.ReadLine()?.Trim();
         }
 
         Console.Write("Enter Expected Departure Time (yyyy-mm-dd hh:mm): ");
-        while (!DateTime.TryParse(Console.ReadLine(), out et))
+        if (!DateTime.TryParse(Console.ReadLine(), out et))
         {
             Console.Write("Invalid format. Please enter the Expected Departure Time (yyyy-mm-dd hh:mm): ");
         }
@@ -333,12 +338,6 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
         else if (flightType == "4")
         {
             newFlight = new NORMFlight(fn, ori, dest, et, stat);
-        }
-
-        if (flightDict.ContainsKey(fn))
-        {
-            Console.WriteLine($"Flight number {fn} already exists. Please choose a different flight number.");
-            return;
         }
 
         flightDict.Add(newFlight.FlightNumber, newFlight);
