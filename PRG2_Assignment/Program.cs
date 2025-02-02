@@ -61,7 +61,7 @@ while (true)
     }
     else if (option == "7")
     {
-
+        DisFlightsChron(flightDict);
     }
     else if (option == "0") break;
     else
