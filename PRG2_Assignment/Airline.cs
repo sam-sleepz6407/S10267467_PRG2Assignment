@@ -26,18 +26,34 @@ namespace PRG2_Assignment
             Name = name;
             Code = code;
         }
-        //public bool AddFlight(Flight f)
-        //{
-
-        //}
+        public bool AddFlight(Flight f)
+        {
+            if (Flights.ContainsKey(f.FlightNumber))
+            {
+                return false;
+            }
+            else
+            {
+                Flights[f.FlightNumber] = f;
+                return true;
+            }
+        }
         //public bool CalculateFees()
         //{
 
         //}
-        //public bool RemoveFlight(Flight f)
-        //{
-
-        //}
+        public bool RemoveFlight(Flight f)
+        {
+            if (Flights.ContainsKey(f.FlightNumber))
+            {
+                Flights.Remove(f.FlightNumber);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public override string ToString()
         {
             return $"Name: {Name}, Code: {Code}";

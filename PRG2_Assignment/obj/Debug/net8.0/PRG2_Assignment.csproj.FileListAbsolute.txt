@@ -16,3 +16,21 @@ C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debu
 C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.pdb
 C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.genruntimeconfig.cache
 C:\school\1.2\programming II\assessment\PRG2_Assignment\PRG2_Assignment\obj\Debug\net8.0\ref\PRG2_Assignment.dll
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\PRG2_Assignment.exe
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\airlines.csv
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\boardinggates.csv
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\flights.csv
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\PRG2_Assignment.deps.json
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\PRG2_Assignment.runtimeconfig.json
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\PRG2_Assignment.dll
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\bin\Debug\net8.0\PRG2_Assignment.pdb
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.AssemblyInfoInputs.cache
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.AssemblyInfo.cs
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.csproj.CoreCompileInputs.cache
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.sourcelink.json
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.dll
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\refint\PRG2_Assignment.dll
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.pdb
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\PRG2_Assignment.genruntimeconfig.cache
+C:\school\1.2\programming II\spare file for backup\PRG2_Assignment\obj\Debug\net8.0\ref\PRG2_Assignment.dll
