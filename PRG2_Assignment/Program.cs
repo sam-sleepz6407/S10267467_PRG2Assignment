@@ -67,6 +67,10 @@ while (true)
     {
         advancedfeaturea();
     }
+    else if (option == "9")
+    {
+        DisTotalFeePerAirline(flightDict, boardinggatedict);
+    }
     else if (option == "0") break;
     else
     {
@@ -762,6 +766,7 @@ void displaymainmenu()
     Console.WriteLine("6. Modify Flight Details");
     Console.WriteLine("7. Display Flight Schedule");
     Console.WriteLine("8. Process all unassigned Flights to Boarding Gates ");
+    Console.WriteLine("9. Display the total fee per airline for the day");
     Console.WriteLine("0. Exit");
     Console.WriteLine("\n");
 }
