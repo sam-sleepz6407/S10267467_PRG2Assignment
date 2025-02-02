@@ -63,6 +63,10 @@ while (true)
     {
         DisFlightsChron(flightDict);
     }
+    else if (option == "8")
+    {
+        advancedfeaturea();
+    }
     else if (option == "0") break;
     else
     {
@@ -632,9 +636,15 @@ void feature8()
                         gatevalid = false;
                         Console.WriteLine("Invalid Boarding Gate. Enter the Boarding Gate to be changed into: ");
                     }
+                    if (boardinggatedict[gatename].flight != null)
+                    {
+                        gatevalid = false;
+                        Console.WriteLine("Gate already in use. Enter the Boarding Gate to be changed into: ");
+                    }
                 }
                 Console.WriteLine($"Boarding gate has been changed to {gatename}");
                 flightfound.BoardingGate = gatename;
+                boardinggatedict[gatename].flight = flightfound;
 
             }
         }
@@ -766,6 +776,7 @@ void displaymainmenu()
     Console.WriteLine("5. Display Airline Flights");
     Console.WriteLine("6. Modify Flight Details");
     Console.WriteLine("7. Display Flight Schedule");
+    Console.WriteLine("8. Process all unassigned Flights to Boarding Gates ");
     Console.WriteLine("0. Exit");
     Console.WriteLine("\n");
 }
@@ -913,4 +924,110 @@ Flight? searchflights(string flightnum)
         }
     }
     return null;
+}
+
+//advanced feature
+void advancedfeaturea()
+{
+    int assigned = 0;
+    Queue<Flight> unassignedflights = new Queue<Flight>();
+    foreach (KeyValuePair<string, Flight> kvp in flightDict)
+    {
+        if (kvp.Value.BoardingGate == null)
+        {
+            unassignedflights.Enqueue(kvp.Value);
+        }
+        else
+        {
+            assigned++;
+        }
+    }
+    Console.WriteLine($"Total number of flights that have not yet been assigned a Boarding Gate: {unassignedflights.Count}");
+    List<BoardingGate> unassignedboardinggates = new List<BoardingGate>();
+    foreach (KeyValuePair<string, BoardingGate> kvp in boardinggatedict)
+    {
+        if (kvp.Value.flight == null)
+        {
+            unassignedboardinggates.Add(kvp.Value);
+        }
+        else
+        {
+            assigned++;
+        }
+    }
+    int processed = 0;
+    Console.WriteLine($"Total number of boarding gates that have not yet been assigned a flight: {unassignedboardinggates.Count}");
+    List<BoardingGate> gatesToRemove = new List<BoardingGate>();
+    foreach (Flight flight in unassignedflights)
+    {
+        if (flight.GetType() == typeof(PRG_2_Assignment.CFFTFlight))
+        {
+            foreach (BoardingGate gate in unassignedboardinggates)
+            {
+                if (gate.SupportsCFFT)
+                {
+                    gate.flight = flight;
+                    flight.BoardingGate = gate.GateName;
+                    gatesToRemove.Add(gate);
+                    processed += 2;
+                    break;
+                }
+            }
+        }
+        if (flight.GetType() == typeof(PRG_2_Assignment.LWTTFlight))
+        {
+            foreach (BoardingGate gate in unassignedboardinggates)
+            {
+                if (gate.SupportsLWTT)
+                {
+                    gate.flight = flight;
+                    flight.BoardingGate = gate.GateName;
+                    gatesToRemove.Add(gate);
+                    processed += 2;
+                    break;
+                }
+            }
+        }
+        if (flight.GetType() == typeof(PRG_2_Assignment.DDJBFlight))
+        {
+            foreach (BoardingGate gate in unassignedboardinggates)
+            {
+                if (gate.SupportsDDJB)
+                {
+                    gate.flight = flight;
+                    flight.BoardingGate = gate.GateName;
+                    gatesToRemove.Add(gate);
+                    processed += 2;
+                    break;
+                }
+            }
+        }
+        if (flight.GetType() == typeof(PRG_2_Assignment.NORMFlight))
+        {
+            foreach (BoardingGate gate in unassignedboardinggates)
+            {
+                if (!(gate.SupportsDDJB | gate.SupportsCFFT | gate.SupportsLWTT))
+                {
+                    gate.flight = flight;
+                    flight.BoardingGate = gate.GateName;
+                    gatesToRemove.Add(gate);
+                    processed += 2;
+                    break;
+                }
+            }
+        }
+    }
+    foreach (BoardingGate gate in gatesToRemove)
+    {
+        unassignedboardinggates.Remove(gate);
+    }
+    Console.WriteLine($"Total number of flights and boarding gates processed and assigned: {processed}");
+    if (assigned == 0)
+    {
+        Console.WriteLine($"Percentage of flights and boarding gates processed automatically over those that were already assigned: 100%");
+    }
+    else
+    {
+        Console.WriteLine($"Percentage of flights and boarding gates processed automatically over those that were already assigned: {(processed / assigned) * 100}%");
+    }
 }

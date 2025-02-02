@@ -22,7 +22,7 @@ namespace PRG2_Assignment
         public bool SupportsCFFT { get; set; }
         public bool SupportsDDJB { get; set; }
         public bool SupportsLWTT { get; set; }
-        public Flight Flight { get; set; }
+        public Flight flight { get; set; }
         public BoardingGate(string gatename, bool supportcfft, bool supportDDJB, bool supportlwtt)
         {
             GateName = gatename;
