@@ -422,47 +422,26 @@ void feature8()
     
 }
 
-void DisFlightsChron(Dictionary<string, Flight> flightDict) //feature 9
+void DisFlightsChron(Dictionary<string, Flight> flightDict) //feature 9 
 {
     var sortedFlights = flightDict.Values.OrderBy(f => f.ExpectedTime).ToList();
-    Console.WriteLine("Flights for the day (ordered by earliest departure time):\n");
+
+    Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------");
+
+    Console.WriteLine("{0,-15} {1,-16} {2,-18} {3,-20} {4,-35} {5,-12} {6,-12} {7,-20}",
+        "FlightNumber", "Airline Name", "Origin", "Destination", "Expected Departure/Arrival Time", "Status", "BoardingGate", "Special Request Code");
+
+    Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------");
 
     foreach (var flight in sortedFlights)
     {
-        Console.WriteLine($"Flight Number: {flight.FlightNumber}");
-        Console.WriteLine($"Airline Name: {flight.Airline}");
-        Console.WriteLine($"Origin: {flight.Origin}");
-        Console.WriteLine($"Destination: {flight.Destination}");
-        Console.WriteLine($"Expected Departure Time: {flight.ExpectedTime:yyyy-MM-dd HH:mm}");
-        Console.WriteLine($"Status: {flight.Status}");
+        string boardingGate = string.IsNullOrEmpty(flight.BoardingGate) ? "Unassigned" : flight.BoardingGate;
+        string specialRequestCode = flight is DDJBFlight ? "DDJB" :
+                                     flight is LWTTFlight ? "LWTT" :
+                                     flight is CFFTFlight ? "CFFT" : "NORM";
 
-        if (flight is DDJBFlight ddjb)
-        {
-            Console.WriteLine($"Special Request Code: {ddjb.SpecialRequestCode}");
-        }
-        else if (flight is LWTTFlight lwtt)
-        {
-            Console.WriteLine($"Special Request Code: {lwtt.SpecialRequestCode}");
-        }
-        else if (flight is CFFTFlight cfft)
-        {
-            Console.WriteLine($"Special Request Code: {cfft.SpecialRequestCode}");
-        }
-        else
-        {
-            Console.WriteLine("Special Request Code: None");
-        }
-
-        if (!string.IsNullOrEmpty(flight.BoardingGate))
-        {
-            Console.WriteLine($"Boarding Gate: {flight.BoardingGate}");
-        }
-        else
-        {
-            Console.WriteLine("Boarding Gate: Not assigned");
-        }
-
-        Console.WriteLine();
+        Console.WriteLine("{0,-15} {1,-16} {2,-18} {3,-20} {4,-35} {5,-12} {6,-12} {7,-20}",
+            flight.FlightNumber, flight.Airline, flight.Origin, flight.Destination, flight.ExpectedTime.ToString("HH:mm"), flight.Status, boardingGate, specialRequestCode);
     }
 }
 
