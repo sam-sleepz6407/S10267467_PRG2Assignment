@@ -317,20 +317,6 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
         Console.Write("Enter Special Request Code (or press Enter to skip): ");
         string src = Console.ReadLine()?.Trim();
 
-        Console.WriteLine("\nSelect the Flight Type:");
-        Console.WriteLine("1. DDJBFlight (Special Request Code required)");
-        Console.WriteLine("2. LWTTFlight (Special Request Code required)");
-        Console.WriteLine("3. CFFTFlight (Special Request Code required)");
-        Console.WriteLine("4. NORMFlight (No Special Request Code)");
-
-        Console.Write("\nEnter Flight Type (1, 2, 3, or 4): ");
-        flightType = Console.ReadLine()?.Trim();
-        while (string.IsNullOrEmpty(flightType) || !"1234".Contains(flightType))
-        {
-            Console.Write("Invalid flight type. Please enter 1, 2, 3, or 4: ");
-            flightType = Console.ReadLine()?.Trim();
-        }
-
         Flight newFlight = null;
         if (flightType == "1")
         {
@@ -377,7 +363,7 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
                 sw.WriteLine($"{newFlight.FlightNumber},{newFlight.Origin},{newFlight.Destination},{newFlight.ExpectedTime:yyyy-MM-dd HH:mm},{newFlight.Status}");
             }
         }
-        Console.WriteLine("Flight details have been saved to flights.csv!");
+        Console.WriteLine("Flight details have been saved!");
     }
     catch (Exception ex)
     {
