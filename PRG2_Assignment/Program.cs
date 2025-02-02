@@ -195,10 +195,18 @@ void AssBoardingGate(Dictionary<string, Flight> flightDict) //feature 5
             Console.WriteLine($"Flight {fn} found! Details:\n{flight}");
 
             string specialRequestCode = "None";
-            if (flight is DDJBFlight ddjbFlight) specialRequestCode = ddjbFlight.SpecialRequestCode ?? "None";
-            else if (flight is LWTTFlight lwttFlight) specialRequestCode = lwttFlight.SpecialRequestCode ?? "None";
-            else if (flight is CFFTFlight cfftFlight) specialRequestCode = cfftFlight.SpecialRequestCode ?? "None";
-
+            if (flight is DDJBFlight ddjbFlight)
+            {
+                specialRequestCode = ddjbFlight.SpecialRequestCode ?? "None";
+            }
+            else if (flight is LWTTFlight lwttFlight)
+            {
+                specialRequestCode = lwttFlight.SpecialRequestCode ?? "None";
+            }
+            else if (flight is CFFTFlight cfftFlight)
+            {
+                specialRequestCode = cfftFlight.SpecialRequestCode ?? "None";
+            }
             Console.WriteLine($"Special Request Code: {specialRequestCode}");
             Console.Write("Enter the boarding gate: ");
             string bg = Console.ReadLine();
@@ -339,13 +347,6 @@ void CreateNewFlight(Dictionary<string, Flight> flightDict) //feature 6
         }
 
         flightDict.Add(newFlight.FlightNumber, newFlight);
-        foreach (KeyValuePair<string, Airline> kvp in airlinedict)
-        {
-            if (fn[0..2] == kvp.Key)
-            {
-                kvp.Value.Flights[fn] = newFlight;
-            }
-        }
         Console.WriteLine("New flight has been successfully added!");
 
         using (StreamWriter sw = new StreamWriter("flights.csv", true))
