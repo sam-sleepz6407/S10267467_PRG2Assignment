@@ -49,7 +49,7 @@ while (true)
     }
     else if (option == "4")
     {
-
+        CreateNewFlight(flightDict);
     }
     else if (option == "5")
     {
