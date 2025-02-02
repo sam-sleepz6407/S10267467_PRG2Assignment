@@ -56,7 +56,7 @@ namespace PRG2_Assignment
         }
         public override string ToString()
         {
-            return $"Name: {Name}";
+            return $"{Name}";
         }
     }
 }
