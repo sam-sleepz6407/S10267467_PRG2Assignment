@@ -84,8 +84,7 @@ void LoadFlights(Dictionary<string, Flight> flightDict) //feature 2
                 string ori = data[1];
                 string dest = data[2];
                 DateTime et = DateTime.Parse(data[3]);
-                string status = data[4];
-                string src = data.Length > 5 ? data[5] : null;
+                string src = data[4];
 
                 if (flightDict.ContainsKey(fn))
                 {
@@ -94,29 +93,29 @@ void LoadFlights(Dictionary<string, Flight> flightDict) //feature 2
                 }
 
                 Flight flight = null;
-                if (status.Contains("DDJB"))
+                if (src.Contains("DDJB"))
                 {
-                    flight = new DDJBFlight(fn, ori, dest, et, status, src);
+                    flight = new DDJBFlight(fn, ori, dest, et, null, src);
                 }
-                else if (status.Contains("LWTT"))
+                else if (src.Contains("LWTT"))
                 {
-                    flight = new LWTTFlight(fn, ori, dest, et, status, src);
+                    flight = new LWTTFlight(fn, ori, dest, et, null, src);
                 }
-                else if (status.Contains("CFFT"))
+                else if (src.Contains("CFFT"))
                 {
-                    flight = new CFFTFlight(fn, ori, dest, et, status, src);
+                    flight = new CFFTFlight(fn, ori, dest, et, null, src);
                 }
                 else
                 {
-                    flight = new NORMFlight(fn, ori, dest, et, status);
+                    flight = new NORMFlight(fn, ori, dest, et, null);
                 }
 
                 flightDict.Add(fn, flight);
-                foreach (KeyValuePair<string,Airline> kvp in airlinedict)
+                foreach(Airline airline in airlinedict.Values)
                 {
-                    if (fn[0..2] == kvp.Key)
+                    if (fn.Contains(airline.Code))
                     {
-                        kvp.Value.Flights[fn]= flight;
+                        airline.AddFlight(flight);
                     }
                 }
             }
@@ -146,7 +145,15 @@ void ListFlights(Dictionary<string, Flight> flightDict) //feature 3
     foreach (var flight in flightDict.Values)
     {
         string formattedTime = flight.ExpectedTime.ToString("hh:mm tt");
-        Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{formattedTime,-18}{flight.Status}");
+        if (flight.Status == null)
+        {
+            string newstat = "no status";
+            Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{formattedTime,-18}{newstat}");
+        }
+        else
+        {
+            Console.WriteLine($"{flight.FlightNumber,-15}{flight.Origin,-25}{flight.Destination,-25}{formattedTime,-18}{flight.Status}");
+        }
     }
 }
 
