@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\school\\1.2\\programming II\\spare file for backup\\PRG2_Assignment\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|c:\\school\\1.2\\programming ii\\spare file for backup\\prg2_assignment\\airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|solutionrelative:airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|c:\\school\\1.2\\programming ii\\spare file for backup\\prg2_assignment\\flights.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|solutionrelative:flights.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|c:\\school\\1.2\\programming ii\\spare file for backup\\prg2_assignment\\airlines.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|solutionrelative:airlines.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|c:\\school\\1.2\\programming ii\\spare file for backup\\prg2_assignment\\airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|solutionrelative:airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B48A6CFE-8A39-4E42-93AF-E5E69FEE9B04}|PRG2_Assignment.csproj|c:\\school\\1.2\\programming ii\\spare file for backup\\prg2_assignment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "flights.csv",
               "DocumentMoniker": "C:\\school\\1.2\\programming II\\spare file for backup\\PRG2_Assignment\\flights.csv",
               "RelativeDocumentMoniker": "flights.csv",
@@ -79,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "airlines.csv",
               "DocumentMoniker": "C:\\school\\1.2\\programming II\\spare file for backup\\PRG2_Assignment\\airlines.csv",
               "RelativeDocumentMoniker": "airlines.csv",
@@ -87,8 +87,7 @@
               "RelativeToolTip": "airlines.csv",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
-              "WhenOpened": "2025-02-02T15:49:00.683Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-02T15:49:00.683Z"
             },
             {
               "$type": "Document",
@@ -152,13 +151,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Airline.cs",
               "DocumentMoniker": "C:\\school\\1.2\\programming II\\spare file for backup\\PRG2_Assignment\\Airline.cs",
               "RelativeDocumentMoniker": "Airline.cs",
               "ToolTip": "C:\\school\\1.2\\programming II\\spare file for backup\\PRG2_Assignment\\Airline.cs",
               "RelativeToolTip": "Airline.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAwwDoAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAcwDoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T14:51:36.871Z",
               "EditorCaption": ""

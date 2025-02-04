@@ -10,6 +10,8 @@
 using PRG_2_Assignment;
 using PRG2_Assignment;
 
+Terminal terminal5 = new Terminal("Terminal ");
+
 Dictionary<string, Flight> flightDict = new Dictionary<string, Flight>();
 
 //feature 1
@@ -27,6 +29,10 @@ Console.WriteLine($"{boardinggatedict.Count} Boarding Gates Loaded!");
 Console.WriteLine("Loading Flights...");
 LoadFlights(flightDict);
 Console.WriteLine($"{flightDict.Count} Flights Loaded!");
+
+terminal5.Airlines = airlinedict;
+terminal5.Flights = flightDict;
+terminal5.BoardingGates = boardinggatedict;
 
 Console.WriteLine("\n\n\n");
 //main

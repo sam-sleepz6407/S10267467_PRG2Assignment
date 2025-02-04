@@ -20,22 +20,27 @@ namespace PRG2_Assignment
     internal class Terminal
     {
         public string TerminalName { get; set; }
-        public Dictionary<string, Airline> Airlines { get; set; }
-        public Dictionary<string, Flight> Flights { get; set; }
-        public Dictionary<string, BoardingGate> BoardingGates { get; set; }
-        public Dictionary<string, double> GateFees { get; set; }
-        public Terminal(string terminalname, Dictionary<string, Airline> airlines, Dictionary<string, Flight> flights, Dictionary<string, BoardingGate> boardinggates, Dictionary<string, double> gatefees)
+        public Dictionary<string, Airline> Airlines { get; set; } = new Dictionary<string, Airline>();
+        public Dictionary<string, Flight> Flights { get; set; } = new Dictionary<string, Flight>();
+        public Dictionary<string, BoardingGate> BoardingGates { get; set; } = new Dictionary<string, BoardingGate>();
+        public Dictionary<string, double> GateFees { get; set; } = new Dictionary<string, double>();
+        public Terminal(string terminalname)
         {
             TerminalName = terminalname;
-            Airlines = airlines;
-            Flights = flights;
-            BoardingGates = boardinggates;
-            GateFees = gatefees;
-        }
-        //public bool AddAirline(Airline a)
-        //{
 
-        //}
+        }
+        public bool AddAirline(Airline a)
+        {
+            if (Airlines.ContainsKey(a.Code))
+            {
+                return false;
+            }
+            else
+            {
+                Airlines[a.Code] = a;
+                return true;
+            }
+        }
         //public bool AddBoardingGate(BoardingGate b)
         //{
 
